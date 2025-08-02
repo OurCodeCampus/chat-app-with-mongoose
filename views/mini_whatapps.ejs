@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mini whatapps</title>
+    <meta name="author" content="suraj kumar sharma">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1 class="main-heading">mini whatapps</h1>
+    </header>
+
+    <main>
+        <div class="chat-body">
+            <form method="GET" action="/chats/new">
+                <button class="new-chat-btn">New Chat</button>
+            </form>
+            <% for(let chat of chats) { %>
+
+                <div class="chat-card">
+                    <p class="chat-title">chat</p>
+                    <p class="chat-from-name"><span>From :</span>
+                        <%= chat.from %>
+                    </p>
+                    <p class="chat-message"><span>Message :</span>
+                        <%= chat.message%>
+                    </p>
+                    <p class="chat-created"><span>Created at :</span>
+                        <%=chat.created_at.toString().split(" ").splice(0,4).join(" ")%>
+                    </p>
+                    <p class="chat-to-name"><span>Received by </span>
+                        <%= chat.to %>
+                    </p>
+
+                    <div class="operation-btn">
+                        <form action="/chats/<%=chat._id%>/edit"  method="GET">
+                        <button class="edit-chat-btn">Edit Chat</button>
+                    </form>
+
+                    <form action="/chats/<%=chat._id%>?_method=DELETE"  method="POST">
+                        <button class="delete-chat-btn">Delete Chat</button>
+                    </form>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </main>
+
+    <footer>
+        <p>Mini whatapps @ copy 2025 All Right Reserved</p>
+    </footer>
+</body>
+
+</html>

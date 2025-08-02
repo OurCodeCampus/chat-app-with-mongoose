@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create new chats</title>
+    <meta name="author" content="suraj kumar sharma">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1 class="main-heading">mini whatapps</h1>
+    </header>
+
+
+    <div class="chat-form-body">
+        <form action="/chats/<%=chat._id%>?_method=PUT" method="POST" class="chat-new-create-form">
+            <p class="chat-create-title">Modified chat</p>
+
+            <p class="update-chat-id">Edit your chat : <%=chat._id%> </p>
+            <p class="update-chat-send">This chat was sent from <b><%=chat.from%></b> to <b><%=chat.to%></b></p>
+            <textarea type="text"class="update-message" name="message" id="message" placeholder="who are you?" required="on"
+                autocomplete="off" autofocus="on"><%=chat.message%></textarea>
+
+            <div class="btn-container">
+                <button class="create-chat-btn">Update chat</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
